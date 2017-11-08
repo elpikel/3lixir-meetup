@@ -1,0 +1,140 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/serif.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Phoenix z lotu ptaka</h2>
+					<aside class="notes">
+						Phoenix to framework webowy, napisany w Elixirze, chodzący na ErlangVM
+					</aside>
+				</section>
+				<section>
+					<h3>Chris McChord - beggining</h3>
+					<img src="pics/chris.png" />
+					<aside class="notes">
+						Chris McChord szukał alternatywy dla railsów, ponieważ nie zapewniały mu wydajności, której chciał.
+						Usłyszał o Whatsappie - 2mln połączeń w 2012 zbudowanych na Erlangu. Przy 24 rdzeniowej maszynie 96GB RAMu 40% zasobów.
+						Obecnie więcej żądań codziennie niż smsy.
+						Chris postanowił, że chce tego w aplikacjach webowych.
+					</aside>
+				</section>
+				<section>
+					<img src="pics/first_big.png" />
+					<aside class="notes">
+						<p>Dlaczego Chris wybrał Erlanga? Tak na prawde to ta sama domena - łączność. Wiele klientów rozmawia z serverem,
+						 który rozmawia z endpointem(endpointami).</p>
+						 <p>Jeśli dodasz serwer, zacznie wysyłać wiadomości z obecnymi serwerami - dzięki temu jeśli klient straci połączenie i zacznie rozmawiać
+							  z nowym serwerem nic nie zauważy. Dokładnie jak w telefonii - gdy jedziesz pociągiem i co chwila zmienia się źródło zasięgu.
+						 </p>
+						 <p>Erlang został zaprojektowany do takich scenariuszy i ma 30+ lat doświadczenia w produkcji</p>
+						 <p>W jaki sposób klient rozmawia z serwerem? Coś, od czego Phoenix się zaczął, czyli Phoenix Channels</p>
+					</aside>
+				</section>
+				<section id="fragments">
+					<h2>Phoenix channels</h2>
+					<ul>
+						<li class="fragment">PubSub</li>
+						<li class="fragment">Isolated and concurrent</li>
+						<li class="fragment">Transport Agnostic</li>
+					</ul>
+					<aside class="notes">
+						Tutaj opowiem wiecej o nich później, to ich takie najważniejsze cechy. O PubSubie mogę już powiedziec, bo to zwykly pubsub.
+						Klienci się subskrybują do serwera i nasłuchują na odpowiedź serwera. Serwer może opublikować wiadomość do wszystkich, czy też filtrować 
+						po kanałach/pokojach.
+					</aside>
+				</section>
+				<section id="fragments">
+					<h3>Isolated and concurrent</h3>
+					<ul>
+						<li class="fragment">Isolated crashes</li>
+						<li class="fragment">Isolated data</li>
+						<li class="fragment">No global GC and global pauses</li>
+					</ul>
+					<aside class="notes">
+						Każdy kanał jest osobnym procesem - erlangowym (jeśli Arek nie powiedział to powiedz).
+						Dzięki temu mamy izolację danych - nie ma globalnego GC - nie ma globalnych pauz.						
+					</aside>
+				</section>
+				<section data-transition="fade-in none-out">
+					<img src="pics/second_big.png" />
+					<aside class="notes">
+						Są transport agnostic - czyli można ich użyć dla dowolnego klienta, czy to browser, czy IE ;), czy native mobile, czy wbudowane.
+						Dowolny klient łatwo się podłączy do serwera. Tutaj też widzimy zduplikowanie serwerów i sytuację z utratą połączenia.
+					</aside>
+				</section>
+				<section data-transition="none-in fade-out">
+					<img src="pics/third_big.png" />
+					<aside class="notes">
+						Są transport agnostic - czyli można ich użyć dla dowolnego klienta, czy to browser, czy IE ;), czy native mobile, czy wbudowane.
+						Dowolny klient łatwo się podłączy do serwera. Tutaj też widzimy zduplikowanie serwerów i sytuację z utratą połączenia.
+					</aside>
+				</section>
+				<section id="fragments">
+					<h3>Do I have to choose</h3>
+					<h3><div class="fragment">Productivity</div> or <div class="fragment"> performance?</div></h3>
+					<h1 class="fragment fade-up">No!</h1>
+					<aside class="notes">
+						<p>Zwykle frameworki dają nam wybór. Railsy są produktywne, ale wolne.</p>
+						<p>, o niższej abstrakcji, są szybsze, ale dużo musimy robić sami i nie są tak wygodne</p>
+						<p>Dzięki Erlangowi mamy wysoką wydajność, jednak core team zadbał też o wysoką produktywność. Koniec kompromisów!</p>
+					</aside>
+				</section>
+				<section>
+					<img src="pics/fourth.png" />
+					<aside class="notes">
+						Nie mój obrazek - benchmarkowanie. Jak widzicie mamy 2 miliony klientów na maszynie 40 CPU i 128GB RAM.
+						Co ciekawe - gdy połączenia nic nie robiły - nie zajmowały niepotrzebnie pracy procesora. To było rok temu,
+						prace nad frameworkiem ciągle trwają.
+					</aside>
+				</section>
+				<section>
+					<h3>Productivity</h3>
+					<ul>
+						<li class="fragment">Short term</li>
+						<li class="fragment">Long term</li>
+					</ul>
+					<aside class="notes">
+						<p>Genialne poradniki i dokumentacja, którą nie tylko łatwo się pisze, ale i czyta.
+						Dla poradników zapraszam na stronę projektu.
+						Wygodne generatory.</p>
+						<p>Dla long term - programowanie funkcyjne i silne srodowisko TDD - latwe testowanie również frontu! No i ecto zapewnia sandboxowe testowanie.
+							Supervisory - gdy coś padnie jest wznawianie
+						</p>
+					</aside>
+				</section>
+				<section>
+					<img src="pics/fifth_new.png" />
+					<aside class="notes">
+						Struktura projektu - tutaj się skupimy główne na tym, że web to tylko interfejs webowy. Cała logika jest w apce samej.
+						W dodatku - brak modeli - tylko schemy (w apce). To jest wzięte sprzed updatu Phoenixa - twoja_apka_web.
+					</aside>
+				</section>
+				<section>
+					<h3>Thank you & questions</h3>
+					<p>Łukasz Skotarek</p>
+					<p>@dreat_ on Twitter</p>
+					<p>dreat on Elixir Slack</p>
+					<p>mail: contact@dreat.info</p>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js\reveal.js"></script>
+		<script>
+			Reveal.initialize(
+				{
+					controls: true,
+					progress: true,
+
+					dependencies: [
+						{ src: 'plugin/notes/notes.js', async: true }
+					]
+				}
+			);
+		</script>
+	</body>
+</html>
