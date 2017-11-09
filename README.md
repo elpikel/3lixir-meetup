@@ -1,4 +1,4 @@
-# 3lixir  - 3city [Elixir](http://elixir-lang.org) User Group
+# 3lixir  - Trójmiejska Grupa Użytkowników [Elixir'a](http://elixir-lang.org)
 
 ## Co tu znajdziesz?
 Chcemy aby 3lixir czyli trójmiejska grupa użytkownikow elixira była jak najbardziej otwarta i przyjazna jak to tylko możliwe. Narazie nasze spotkania organizujemu w [Hackerspace](https://www.meetup.com/hs3city/). W tym repozytorium planujemy umieszczać wszytkie prezentacja jak i materiały szkoleniowe z poprzednich jak i przyszlych spotkań.
