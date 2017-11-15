@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Nerves</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<img src="lib/img/title.png" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Craft and deploy bulletproof embedded software in Elixir</h3>
+					</section>
+					<section>
+						<img src="lib/img/justinschneck.jpeg" />
+						<h4>Justin Schneck</h4>
+						<aside class="notes">iPhone Developer, Metasphere founder</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Firmware</h3>
+						<p class="fragment fade-up">12MB package</p>
+						<p class="fragment fade-up">Deploy to SD card or directly to firmware</p>
+						<p class="fragment fade-up">Low memory consumption (up to 32MB)</p>
+					</section>
+					<section>
+						<h3>Buildroot</h3>
+						<p>Linux kernel and rootfs</p>
+					</section>
+					<section>
+						<h3>BEAM</h3>
+						<p>Erlang/OTP runtime</p>
+					</section>
+					<section>
+						<h3>Elixir</h3>
+						<p>User's code</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Elixir and IoT?</h3>
+						<p class="fragment fade-up">Erlang/OTP already works on telecomm switches</p>
+					</section>
+					<section>
+						<h3>Elixir and IoT?</h3>
+						<p>
+						Pattern matching is great for IO operations
+						<pre>
+							<code data-trim>
+defp listen_loop() do
+# Infinite loop receiving interrupts from gpio
+receive do
+  {:gpio_interrupt, p, :rising} ->
+    Logger.debug "Received rising event on pin #{p}"
+  {:gpio_interrupt, p, :falling} ->
+    Logger.debug "Received falling event on pin #{p}"
+end
+listen_loop()
+end
+								</code>
+							</pre>
+						</p>
+					</section>
+					<section>
+						<h3>Elixir and IoT?</h3>
+						<p class="fragment fade-up">
+							Real world and hardware are:
+						</p>
+						<p class="fragment fade-up">Concurrent</p>
+						<p class="fragment fade-up">Asynchronous</p>
+						<p class="fragment fade-up">Unpredictable</p>
+						<h3 class="fragment fade-left">... Actor model anyone?</h3>
+					</section>
+					<section>
+						<h3>Elixir and IoT?</h3>
+						<p class="fragment fade-up">
+							Let it crash strategy
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Compatible hardware</h3>
+						<ul>
+							<li>Raspberry Pi A+, B, B+</li>
+							<li>Raspberry Pi Zero and Zero W</li>
+							<li>Raspberry Pi 2</li>
+							<li>Raspberry Pi 3</li>
+							<li>BeagleBone Black</li>
+							<li>Alix</li>
+							<li>AG150</li>
+							<li>Intel Galileo 2</li>
+							<li>Lego EV3</li>
+							<li>Linkit Smart 7688 (and Duo)</li>
+							<li>QEmu Arm</li>
+						</ul>
+					</section>
+					<section>
+						And everything you can connect to them
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Tooling</h3>
+						<p>Set of dedicated mix tasks</p>
+					</section>
+					<section>
+						<h3>Generate new app</h3>
+						<pre>
+							<code data-trim>
+								mix nerves.new hello_nerves
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Build and deploy</h3>
+						<pre>
+							<code data-trim>
+								export MIX_TARGET=rpi3
+								mix deps.get
+								mix firmware
+								mix firmware.burn
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Set of official and community libraries available in HEX</h3>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Projects</h3>
+					</section>
+					<section>
+						<img style="width: 50%" src="lib/img/cat_feeder.png" />
+						<h4>@wsmoak</h4>
+					</section>
+					<section>
+						<img style="width: 70%" src="lib/img/beer2.png" />
+						<h4>@diptimmo</h4>
+					</section>
+					<section>
+						<img style="width: 30%" src="lib/img/radar1.jpg" />
+						<img style="width: 50%" src="lib/img/radar2.jpg" />
+						<h4>Commercial Radar Interface</h4>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Code basics</h3>
+					</section>
+					<section>
+						<h4>GPIO interface</h4>
+						<div class="fragment fade-up">
+							Start them
+							<pre>
+								<code data-trim>
+									{:ok, output_pid} = GPIO.start_link(@output_pin, :output)
+								</code>
+							</pre>
+						</div>
+						<div class="fragment fade-up">
+							Send to them
+							<pre>
+								<code data-trim>
+									GPIO.write(output_pid, 1)
+								</code>
+							</pre>
+						</div>
+					</section>
+					<section>
+						<h4>Network interface</h4>
+						<div class="fragment fade-up">
+							Configure
+							<pre>
+								<code data-trim>
+	config :nerves_network, :default,
+  wlan0: [
+    ssid: System.get_env("NERVES_NETWORK_SSID"),
+    psk: System.get_env("NERVES_NETWORK_PSK"),
+    key_mgmt: String.to_atom(key_mgmt)
+  ],
+  eth0: [
+    ipv4_address_method: :dhcp
+  ]
+								</code>
+							</pre>
+							<div class="fragment fade-up">
+								Setup in code
+								<pre>
+									<code data-trim>
+										Nerves.Network.Setup(:wlan0)
+									</code>
+								</pre>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h3>DEMO</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
