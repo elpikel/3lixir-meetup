@@ -118,7 +118,7 @@ The benefit of having explicit changesets is that we can easily provide differen
   end
 ```
 
-Changesets are also capable of transforming database constraints, like unique indexes and foreign key checks, into errors. Allowing developers to keep their database consistent while still providing proper feedback to end users. Check Ecto.Changeset.unique_constraint/3 for some examples as well as the other _constraint functions.
+Changesets are also capable of transforming database constraints, like unique indexes and foreign key checks, into errors. Allowing developers to keep their database consistent while still providing proper feedback to end users. Check Ecto.Changeset.unique_constraint for some examples as well as the other constraint functions.
 
 12. Queries - Ecto allows you to write queries in Elixir and send them to the repository, which translates them to the underlying database. Let’s see an example:
 
