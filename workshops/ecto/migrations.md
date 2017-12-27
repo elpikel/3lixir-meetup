@@ -74,7 +74,7 @@ config :ecto_exercises, Repo, migration_timestamps: [type: :utc_datetime]
 ```
 
 
-# TODO
+# Exercises
 
 -add column to table
 -add constraint on column
