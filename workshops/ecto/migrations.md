@@ -77,11 +77,11 @@ config :ecto_exercises, Repo, migration_timestamps: [type: :utc_datetime]
 # Exercises
 
 -add column to table
+-remove column
+-rename column
+-change column type
+-add default value as fragment
 -add constraint on column
 -create index
 -execute sql
--add default value as fragment
--change column type
--add refernce to other table
--remove column
--rename column
+-add reference to other table
