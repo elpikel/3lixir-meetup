@@ -21,5 +21,5 @@ By default, a schema will automatically generate a primary key which is named id
 
 1. Change primary_key to uuid
 2. Check all ecto types
-3. Define posts users comments tables (migrations&schemas)
+3. Define posts, users, comments, categories tables (migrations&schemas)
 4. Implement ecto custom type
