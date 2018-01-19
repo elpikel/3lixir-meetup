@@ -5,6 +5,7 @@ defmodule Post do
   schema "posts" do
     field :title, :string
     field :body, :string
+    field :visits, :integer
 
     belongs_to :user, User
     has_many :comments, Comment
@@ -16,7 +17,7 @@ defmodule Post do
 
   def changeset(post, params \\ %{}) do
     post
-    |> cast(params, [:title, :body])
-    |> validate_required([:title, :body])
+    |> cast(params, [:title, :body, :integer])
+    |> validate_required([:title, :body, :integer])
   end
 end
