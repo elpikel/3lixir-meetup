@@ -1,8 +1,11 @@
 defmodule BasicsTest do
   use ExUnit.Case
 
+  setup do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
+  end
+
   test "should be able to fetch and delete posts" do
-    Repo.delete_all(Post)
     post = %Post{title: "title", body: "content"}
     Repo.insert(post)
     posts = Repo.all(Post)

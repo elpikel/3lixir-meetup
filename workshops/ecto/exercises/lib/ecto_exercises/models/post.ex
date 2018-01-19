@@ -6,6 +6,11 @@ defmodule Post do
     field :title, :string
     field :body, :string
 
+    belongs_to :user, User
+    has_many :comments, Comment
+
+    many_to_many :categories, Category, join_through: "posts_categories"
+
     timestamps()
   end
 

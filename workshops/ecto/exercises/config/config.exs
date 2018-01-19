@@ -27,12 +27,6 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
 config :ecto_exercises, :ecto_repos, [Repo]
 
-config :ecto_exercises, Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: "ecto_exercises",
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost"
+import_config "#{Mix.env}.exs"
