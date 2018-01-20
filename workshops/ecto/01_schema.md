@@ -19,7 +19,12 @@ By default, a schema will automatically generate a primary key which is named id
 
 # Exercises
 
-1. Change primary_key to uuid
+1. Change primary_key to uuid ?
 2. Check all ecto types
 3. Define posts, users, comments, categories tables (schemas&migrations)
+  + User has many posts
+  + User has many comments
+  + Post has many comments
+  + Categories and comments are in many to many relation
+https://hexdocs.pm/ecto/associations.html
 4. Implement ecto custom type

@@ -306,8 +306,8 @@ from(p in Post, where: p.id < 10, update: [set: [title: fragment("upper(?)", ^ne
 
 # Exercises
 
-1.Get count of visits for each post
-2.Get count of comments for each post
+1.Get sum of visits for each post
+2.Get sum of comments for each post
 3.Get average comments on posts
 4.Get all post's titles
 5.Delete one post
@@ -324,4 +324,4 @@ from(p in Post, where: p.id < 10, update: [set: [title: fragment("upper(?)", ^ne
 16.Load data into struct (posts to some struct) - check what happens when fields do not match.
 17.Use preload to fetch associations check generated sqls.
 18.Use stream to implement paging.
-19.Run all updated and deleted in transation with rollback at the end.
+19.Run all updated and deleted in transaction with rollback at the end.
