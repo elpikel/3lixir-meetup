@@ -24,3 +24,4 @@ TODO:
 - how to insert 
 - how to query
 - how to run cassandra in docker
+- describe tableplus
