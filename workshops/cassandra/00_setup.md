@@ -75,4 +75,3 @@ Xandra.execute!(conn, statement)
 
 {:ok, result} = Xandra.execute(conn, "SELECT * FROM numbers WHERE figure = ?", [{"int", 321}])
 ```
-
