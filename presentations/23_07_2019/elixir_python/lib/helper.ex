@@ -17,8 +17,6 @@ defmodule ElixirPython.Helper do
     Call python function using MFA format
     """
     def call_python(pid, module, function, arguments \\ []) do
-        result = :python.call(pid, module, function, arguments)
-        :python.stop(pid)
-        result
+      :python.call(pid, module, function, arguments)
     end
   end

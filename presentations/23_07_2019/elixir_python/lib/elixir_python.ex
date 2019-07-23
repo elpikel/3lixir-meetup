@@ -9,6 +9,14 @@ defmodule ElixirPython do
     call_python(:adder, :add, [a, b])
   end
 
+  def divide(a, b) do
+    try do
+      call_python(:divider, :divide, [a, b])
+    rescue
+      e in ErlangError -> IO.inspect(e)
+    end
+  end
+
   defp default_instance() do
     # Load all modules in our priv/python directory
     path = Path.join([:code.priv_dir(:elixir_python), "python"])
@@ -19,8 +27,6 @@ defmodule ElixirPython do
   # default python instance
   defp call_python(module, function, args \\ []) do
     pid = default_instance()
-
-    IO.inspect(pid)
 
     Helper.call_python(pid, module, function, args)
   end
