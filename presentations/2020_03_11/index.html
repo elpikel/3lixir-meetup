@@ -22,9 +22,14 @@
                             <li>Distributing data relevant to specific geographic location, for example, points of sale</li>
                             <li>Background task processing done by multiple workers, each capable of handling specific set of tasks</li>
                             <li>Stocks price updates (and updates on other kinds of financial data)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
                             <li>News updates that involve categorization or tagging (for example, only for a particular sport or team)</li>
                             <li>Orchestration of services of different kinds in the cloud</li>
                             <li>Distributed architecture/OS-specific software builds or packaging where each builder can handle only one architecture or OS</li>
+                        </ul>
                     </section>
                 </section>
                 <section>
@@ -133,12 +138,22 @@
                     </section>
                     <section>
                         <h2>Custering</h2>
+                        <p>connects multiple machines together to form a cluster</p>
+                        <p>Virtual hosts, exchanges, users, and permissions are automatically replicated across all nodes in a cluster. Queues may be located on a single node, or mirrored across multiple nodes.</p>
+                        <p>A client connecting to any node in a cluster can use all non-exclusive queues in the cluster, even if they are not located on that node.</p>
+
                     </section>
                     <section>
                         <h2>Federation</h2>
+                        <p>allows an exchange or queue on one broker to receive messages published to an exchange or queue on another.</p>
+                        <p>Federated exchanges and queues are connected with one way point-to-point links.</p>
+                        <p>Typically you would use federation to link brokers across the internet for pub/sub messaging and work queueing.</p>
                     </section>
                     <section>
                         <h2>Shovel</h2>
+                        <p>Consumes messages from a queue on one broker, and forwards them to an exchange on another.</p>
+                        <p>Typically you would use the shovel to link brokers across the internet when you need more control than federation provides.</p>
+                        <p>Dynamic shovels can also be useful for moving messages around in an ad-hoc manner on a single broker.</p>
                     </section>
                 </section>
                 <section>
