@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="css/xcode.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Rabbitmq</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <pre><code data-trim data-noescape>
+{:ok, connection} = AMQP.Connection.open
+{:ok, channel} = AMQP.Channel.open(connection)
+AMQP.Queue.declare(channel, "hello")
+AMQP.Basic.publish(channel, "", "hello", "Hello World!")
+IO.puts " [x] Sent 'Hello World!'"
+AMQP.Connection.close(connection)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim data-noescape>
+{:ok, connection} = AMQP.Connection.open
+{:ok, channel} = AMQP.Channel.open(connection)
+AMQP.Queue.declare(channel, "hello")
+AMQP.Basic.consume(channel, "hello", nil, no_ack: true)
+IO.puts " [*] Waiting for messages. To exit press CTRL+C, CTRL+C"
+
+Receive.wait_for_messages() 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim data-noescape>
+defmodule Receive do
+  def wait_for_messages do
+    receive do
+      {:basic_deliver, payload, _meta} ->
+        IO.puts " [x] Received #{payload}"
+        wait_for_messages()
+    end
+  end
+end
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>DEMO</h2>
+                </section>
+            </div>
+
+            <script src="lib/js/head.min.js"></script>
+            <script src="js/reveal.js"></script>
+
+            <script>
+                Reveal.initialize({
+                    transition: 'linear',
+                    progress: true
+                });
+            </script>
+            <script src="js/highlight.pack.js"></script>
+            <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
