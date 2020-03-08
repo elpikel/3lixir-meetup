@@ -13,11 +13,62 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h2>Rabbitmq</h2>
+                    <h2>RabbitMQ</h2>
                 </section>
-
+                <section>
+                    <h2>Message</h2>
+                </section>
+                <section>
+                    <h2>Exchange</h2>
+                </section>
                 <section>
                     <section>
+                        <h2>Queue</h2>
+                        <p>
+                        Queues in RabbitMQ are ordered collections of messages. Messages are enqueued and dequeued (consumed) in the FIFO manner.
+                        </p>
+                        <ul>
+                            <li>Identified by name ("amq." is reserved)</li>
+                            <li>If you pass empty name then server will generate it.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Properties</h3>
+                        <ul>
+                            <li>Durable</li>
+                            <li>
+                                Exclusive - can be used only by one connection is deleted when connection closes 
+                            </li>
+                            <li>Auto-delete</li>
+                            <li>Additiona argument</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Arguments</h3>
+                        <ul>
+                            <li>Queue type (quorum or classic)</li>
+                            <li>Message and queue TTL</li>
+                            <li>Queue length limit</li>
+                            <li>Mirroring options</li>
+                            <li>Consumer priorities</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Durability</h3>
+
+                        <ul>
+                            <li>Durable queues are persisted to disk and thus survive broker restarts</li>
+                            <li>Queues that are not durable are called transient</li>
+                            <li>Durability of a queue does not make messages that are routed to that queue durable</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <h2>Scaling</h2>
+                </section>
+                <section>
+                    <section>
+                        <h2>Send message</h2>
                         <pre><code data-trim data-noescape>
 {:ok, connection} = AMQP.Connection.open
 {:ok, channel} = AMQP.Channel.open(connection)
@@ -28,6 +79,7 @@ AMQP.Connection.close(connection)
                         </code></pre>
                     </section>
                     <section>
+                        <h2>Receive message</h2>
                         <pre><code data-trim data-noescape>
 {:ok, connection} = AMQP.Connection.open
 {:ok, channel} = AMQP.Channel.open(connection)
@@ -51,9 +103,6 @@ defmodule Receive do
 end
                         </code></pre>
                     </section>
-                </section>
-                <section>
-                    <h2>DEMO</h2>
                 </section>
             </div>
 
