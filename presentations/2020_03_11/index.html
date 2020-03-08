@@ -13,13 +13,65 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h2>RabbitMQ</h2>
+                    <section>
+                        <h2>RabbitMQ</h2>
+                        <p>open source message broker</p>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>Distributing data relevant to specific geographic location, for example, points of sale</li>
+                            <li>Background task processing done by multiple workers, each capable of handling specific set of tasks</li>
+                            <li>Stocks price updates (and updates on other kinds of financial data)</li>
+                            <li>News updates that involve categorization or tagging (for example, only for a particular sport or team)</li>
+                            <li>Orchestration of services of different kinds in the cloud</li>
+                            <li>Distributed architecture/OS-specific software builds or packaging where each builder can handle only one architecture or OS</li>
+                    </section>
                 </section>
                 <section>
-                    <h2>Message</h2>
+                    <section>
+                        <h2>Message</h2>
+
+                        <p>strict behavioural contracts between publisher and consumer</p>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>content-type</li>
+                            <li>content-encoding</li>
+                            <li>correlation-id</li>
+                            <li>message-id</li>
+                            <li>timestamp</li>
+                            <li>expiring</li>
+                            <li>delivery-mode</li>
+                            <li>app-id</li>
+                            <li>user-id</li>
+                            <li>type</li>
+                            <li>reply-to</li>
+                            <li>headers</li>
+                            <li>priority</li>
+                        </ul>
+                    </section>
                 </section>
                 <section>
-                    <h2>Exchange</h2>
+                    <section>
+                        <h2>Exchange</h2>
+                        <img src="images/hello.png"/>
+                    </section>
+                    <section>
+                        <h3>Direct</h3>
+                        <img src="images/direct-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Fanout</h3>
+                        <img src="images/fanout-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Topic</h3>
+                        <img src="images/topic-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Headers</h3>
+                        <img src="images/headers-exchange.png"/>
+                    </section>
                 </section>
                 <section>
                     <section>
@@ -62,9 +114,32 @@
                             <li>Durability of a queue does not make messages that are routed to that queue durable</li>
                         </ul>
                     </section>
+                    <section>
+                        <h3>Questions to ask when you declare queue</h3>
+
+                        <ul>
+                            <li>Do you need to ensure that all messages are received or can they be discarded?</li>
+                            <li>Can you receive messages and then acknowledge or reject them as a batch operation?</li>
+                            <li>If not, can you use transactions to improve performance by automatically batching your individual operations?</li>
+                            <li>Do you really need transactional commit and rollback functionality?</li>
+                            <li>Does your consumers need exclusive access to the messages in the queue it’s consuming from?</li>
+                            <li>What should happen when your consumer encounters an error? Should the message be discarded? Requeued? Dead-letter?</li>
+                        </ul>
+                    </section>
                 </section>
                 <section>
-                    <h2>Scaling</h2>
+                    <section>
+                        <h2>Scaling</h2>
+                    </section>
+                    <section>
+                        <h2>Custering</h2>
+                    </section>
+                    <section>
+                        <h2>Federation</h2>
+                    </section>
+                    <section>
+                        <h2>Shovel</h2>
+                    </section>
                 </section>
                 <section>
                     <section>
