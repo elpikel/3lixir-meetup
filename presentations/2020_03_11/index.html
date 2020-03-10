@@ -39,43 +39,35 @@
                         <p>strict behavioural contracts between publisher and consumer</p>
                     </section>
                     <section>
-                        <ul>
-                            <li>content-type</li>
-                            <li>content-encoding</li>
-                            <li>correlation-id</li>
-                            <li>message-id</li>
-                            <li>timestamp</li>
-                            <li>expiring</li>
-                            <li>delivery-mode</li>
-                            <li>app-id</li>
-                            <li>user-id</li>
-                            <li>type</li>
-                            <li>reply-to</li>
-                            <li>headers</li>
-                            <li>priority</li>
-                        </ul>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Exchange</h2>
-                        <img src="images/hello.png"/>
-                    </section>
-                    <section>
-                        <h3>Direct</h3>
-                        <img src="images/direct-exchange.png"/>
-                    </section>
-                    <section>
-                        <h3>Fanout</h3>
-                        <img src="images/fanout-exchange.png"/>
+                        <table>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>content-type</li>
+                                        <li>content-encoding</li>
+                                        <li>correlation-id</li>
+                                        <li>message-id</li>
+                                        <li>timestamp</li>
+                                        <li>expiring</li>
+                                        <li>delivery-mode</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>app-id</li>
+                                        <li>user-id</li>
+                                        <li>type</li>
+                                        <li>reply-to</li>
+                                        <li>headers</li>
+                                        <li>priority</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
                     </section>
                     <section>
-                        <h3>Topic</h3>
-                        <img src="images/topic-exchange.png"/>
-                    </section>
-                    <section>
-                        <h3>Headers</h3>
-                        <img src="images/headers-exchange.png"/>
+                        <h3>Message Ack</h3>
+                        <h3>Message durability</h3>
                     </section>
                 </section>
                 <section>
@@ -127,6 +119,10 @@
                             <li>Can you receive messages and then acknowledge or reject them as a batch operation?</li>
                             <li>If not, can you use transactions to improve performance by automatically batching your individual operations?</li>
                             <li>Do you really need transactional commit and rollback functionality?</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
                             <li>Does your consumers need exclusive access to the messages in the queue it’s consuming from?</li>
                             <li>What should happen when your consumer encounters an error? Should the message be discarded? Requeued? Dead-letter?</li>
                         </ul>
@@ -134,18 +130,40 @@
                 </section>
                 <section>
                     <section>
+                        <h2>Exchange</h2>
+                        <img src="images/hello.png"/>
+                    </section>
+                    <section>
+                        <h3>Direct</h3>
+                        <img src="images/direct-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Fanout</h3>
+                        <img src="images/fanout-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Topic</h3>
+                        <img src="images/topic-exchange.png"/>
+                    </section>
+                    <section>
+                        <h3>Headers</h3>
+                        <img src="images/headers-exchange.png"/>
+                    </section>
+                </section>
+                <section>
+                    <section>
                         <h2>Scaling</h2>
                     </section>
                     <section>
-                        <h2>Custering</h2>
-                        <p>connects multiple machines together to form a cluster</p>
+                        <h2>Clustering</h2>
+                        <p>Connects multiple machines together</p>
                         <p>Virtual hosts, exchanges, users, and permissions are automatically replicated across all nodes in a cluster. Queues may be located on a single node, or mirrored across multiple nodes.</p>
                         <p>A client connecting to any node in a cluster can use all non-exclusive queues in the cluster, even if they are not located on that node.</p>
 
                     </section>
                     <section>
                         <h2>Federation</h2>
-                        <p>allows an exchange or queue on one broker to receive messages published to an exchange or queue on another.</p>
+                        <p>Allows an exchange or queue on one broker to receive messages published to an exchange or queue on another.</p>
                         <p>Federated exchanges and queues are connected with one way point-to-point links.</p>
                         <p>Typically you would use federation to link brokers across the internet for pub/sub messaging and work queueing.</p>
                     </section>
@@ -155,6 +173,21 @@
                         <p>Typically you would use the shovel to link brokers across the internet when you need more control than federation provides.</p>
                         <p>Dynamic shovels can also be useful for moving messages around in an ad-hoc manner on a single broker.</p>
                     </section>
+                </section>
+                <section>
+                    <h2>Supported protocols</h2>
+
+                    <p>AMQP</p>
+                    <p>MQTT</p>
+                    <p>STOMP</p>
+                    <p>HTTP</p>
+                </section>
+                <section>
+                    <h2>Database integration</h2>
+
+                    <p>Publishing AMQP messages from PostgreSQL<p>
+                    <p>Making RabbitMQ listen to PostgreSQL notifications</p>
+                    <p>Using the InfluxDB storage exchange to store messages</p>
                 </section>
                 <section>
                     <section>
