@@ -1,0 +1,50 @@
+<html>
+    <head>
+    <style>
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+    </head>
+    <body>
+        <div>
+            Jakas firma
+        </div>
+        <div>
+            Jakies konto | <%= report.account_id %>
+        </div>
+        <div>
+            Jakies dane | <%= report.flex %>
+        </div>
+        <div>
+            JJakies informacje.Jakies informacje.Jakies informacje.Jakies informacje.Jakies informacje.Jakies informacje.akies informacje.
+        </div>
+
+        <div>
+            Raport na dzien | <%= report.date %>
+        </div>
+        <table>
+            <tr>
+                <th>Waluta</th>
+                <th>Zarobki</th>
+                <th>Bonusy</th>
+                <th>Balans</th>
+            <tr>
+            <%= for currency_data <- report.currencies_data do %>
+            <tr>
+                <td><%= currency_data.symbol %> <%= currency_data.in_usd %></td>
+                <td><%= currency_data.interest_earned %> <%= currency_data.interest_earned_in_usd %></td>
+                <td><%= currency_data.bonus_earned %> <%= currency_data.bonus_earned_in_usd %></td>
+                <td><%= currency_data.ending_balance %> <%= currency_data.ending_balance_in_usd %></td>
+            </tr>
+            <% end %>
+            <tr>
+                <td>Total* (USD)</td>
+                <td>$<%= report.interest_earned_in_usd %></td>
+                <td>$<%= report.bonus_earned_in_usd %></td>
+                <td>$<%= report.ending_balance_in_usd %></td>
+            </tr>
+        </table>
+    </body>
+</html>
