@@ -1,0 +1,12 @@
+2020-03-11 17:26:03.141 [info] <0.43.0> Application lager started on node nonode@nohost
+2020-03-11 17:26:03.150 [info] <0.43.0> Application xmerl started on node nonode@nohost
+2020-03-11 17:26:03.170 [info] <0.43.0> Application sasl started on node nonode@nohost
+2020-03-11 17:26:03.178 [info] <0.43.0> Application tools started on node nonode@nohost
+2020-03-11 17:26:03.182 [info] <0.43.0> Application jsx started on node nonode@nohost
+2020-03-11 17:26:03.189 [info] <0.43.0> Application ranch started on node nonode@nohost
+2020-03-11 17:26:03.191 [info] <0.43.0> Application recon started on node nonode@nohost
+2020-03-11 17:26:03.248 [info] <0.43.0> Application credentials_obfuscation started on node nonode@nohost
+2020-03-11 17:26:03.248 [info] <0.43.0> Application rabbit_common started on node nonode@nohost
+2020-03-11 17:26:03.258 [info] <0.43.0> Application amqp_client started on node nonode@nohost
+2020-03-11 17:26:03.262 [info] <0.43.0> Application amqp started on node nonode@nohost
+2020-03-11 17:26:03.262 [info] <0.43.0> Application publisher started on node nonode@nohost

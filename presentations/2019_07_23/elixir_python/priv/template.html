@@ -1,0 +1,50 @@
+<html>
+    <head>
+    <style>
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+    </head>
+    <body>
+        <div>
+            BlockFi Interest Account
+        </div>
+        <div>
+            Account ID | <%= report.account_id %>
+        </div>
+        <div>
+            Flex Selection | <%= report.flex %>
+        </div>
+        <div>
+            Not using Interest Payment Flex? Learn more about diverdifying your crypto wealth here
+        </div>
+
+        <div>
+            Month-End Statement | <%= report.date %>
+        </div>
+        <table>
+            <tr>
+                <th>Currency type</th>
+                <th>Interest Earned</th>
+                <th>Referral / Bonus Earned</th>
+                <th>Ending Balance</th>
+            <tr>
+            <%= for currency_data <- report.currencies_data do %>
+            <tr>
+                <td><%= currency_data.symbol %> <%= currency_data.in_usd %></td>
+                <td><%= currency_data.interest_earned %> <%= currency_data.interest_earned_in_usd %></td>
+                <td><%= currency_data.bonus_earned %> <%= currency_data.bonus_earned_in_usd %></td>
+                <td><%= currency_data.ending_balance %> <%= currency_data.ending_balance_in_usd %></td>
+            </tr>
+            <% end %>
+            <tr>
+                <td>Total* (USD)</td>
+                <td>$<%= report.interest_earned_in_usd %></td>
+                <td>$<%= report.bonus_earned_in_usd %></td>
+                <td>$<%= report.ending_balance_in_usd %></td>
+            </tr>
+        </table>
+    </body>
+</html>

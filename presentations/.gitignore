@@ -1,0 +1,4 @@
+.elixir_ls
+.elixir_ls/**
+__pycache__
+__pycache__/**
