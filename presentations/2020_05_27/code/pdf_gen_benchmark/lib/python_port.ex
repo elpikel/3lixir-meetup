@@ -4,8 +4,9 @@ defmodule PdfGenBenchmark.PythonPort do
     - path: directory to include in python path (charlist)
   """
   def python_instance(path) when is_list(path) do
-    python_path = "/usr/local/bin/python3"
-    {:ok, pid} = :python.start(python: to_charlist(python_path), python_path: to_charlist(path))
+    python = '/usr/local/bin/python3'
+
+    {:ok, pid} = :python.start(python: python, python_path: path)
 
     pid
   end

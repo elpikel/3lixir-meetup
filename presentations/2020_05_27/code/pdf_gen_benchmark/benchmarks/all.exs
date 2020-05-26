@@ -1,5 +1,7 @@
 Benchee.run(
   %{
+    "poolboy-30" => fn -> PdfGenBenchmark.poolboy() end,
+    "poolboy-1" => fn -> PdfGenBenchmark.poolboy(1) end,
     "api-30" => fn -> PdfGenBenchmark.api() end,
     "api-1" => fn -> PdfGenBenchmark.api(1) end,
     "weasyprint_cmd-30" => fn -> PdfGenBenchmark.weasyprint_cmd() end,

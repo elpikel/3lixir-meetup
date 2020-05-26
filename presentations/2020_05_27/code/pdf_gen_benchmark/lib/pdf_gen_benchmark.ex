@@ -1,7 +1,33 @@
 defmodule PdfGenBenchmark do
   alias PdfGenBenchmark.PythonPort
+  alias PdfGenBenchmark.PythonWorker
 
-  @number_of_tests 60
+  @number_of_tests 30
+  @timeout 6_000
+
+  def poolboy do
+    1..@number_of_tests
+    |> Enum.map(fn i -> Task.async(fn -> poolboy(i) end) end)
+    |> Enum.each(fn task -> Task.await(task, :infinity) end)
+  end
+
+  def poolboy(i) do
+    html = generate_html()
+    file_name = get_pdf_file_name("poolboy", i)
+
+    :poolboy.transaction(
+      :worker,
+      fn pid ->
+        try do
+          PythonWorker.generate(i, pid, html, file_name)
+        catch
+          :exit, _error ->
+            IO.puts("timeout: #{file_name}")
+        end
+      end,
+      @timeout
+    )
+  end
 
   def api() do
     1..@number_of_tests
@@ -19,7 +45,7 @@ defmodule PdfGenBenchmark do
         [
           {"Content-Type", "application/json"}
         ],
-        recv_timeout: 50_000_000
+        recv_timeout: 999_999_999
       )
 
     File.write!(get_pdf_file_name("api", i), body)

@@ -14,7 +14,8 @@ defmodule PdfGenBenchmark.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {PdfGenBenchmark.Application, []}
     ]
   end
 
@@ -26,7 +27,8 @@ defmodule PdfGenBenchmark.MixProject do
       {:jason, "~> 1.2"},
       {:benchee, "~> 1.0", only: :dev},
       {:benchee_html, "~> 1.0", only: :dev},
-      {:erlport, "~> 0.9"}
+      {:erlport, "~> 0.9"},
+      {:poolboy, "~> 1.5.1"}
     ]
   end
 end

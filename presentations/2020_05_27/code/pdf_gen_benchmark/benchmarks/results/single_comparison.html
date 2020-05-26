@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Benchee Report</title>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/benchee.css">
+    <link rel="stylesheet" type="text/css" href="assets/fontello/css/fontello.css">
+  
+</head>
+
+  <body>
+
+    <div class="header">
+  <h1>benchee report</h1>
+  
+
+  <span class="version-note">
+  <a href="javascript:toggleSystemDataInfo();" title="Click to toggle system info">System info</a>
+</span>
+
+</div>
+
+
+    <article id="system-info" class="benchee-systeminfo" >
+  <h3>System info</h3>
+  <ul class="benchee-systeminfo-list">
+    <li>Elixir: 1.10.2</li>
+    <li>Erlang: 22.2.8</li>
+    <li>Operating system: macOS</li>
+    <li>Available memory: 16 GB</li>
+    <li>CPU Information: Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz</li>
+    <li>Number of Available Cores: 4</li>
+  </ul>
+</article>
+
+
+    
+      <article>
+        <h2>
+          Run Time Comparison
+          <a href="https://github.com/PragTob/benchee_html/wiki/Chart-Types#comparison">
+            <i
+            class="benchee-help-icon icon-question-circle-o"
+            title="Comparisons of the different benchmarking jobs. For Iterations per Second higher is better, the black whiskers denote standard deviation. otherwise it is runtime so lower is better. The Box Plot shows a distribution of run times with the median and outliers."
+            ></i>
+          </a>
+        </h2>
+        <section>
+          <table>
+  <thead>
+    <tr>
+      <th class="text-left">Name</th>
+      
+        <th>Iterations per Second</th>
+      
+      <th>Average</th>
+      <th>Deviation</th>
+      <th>Median</th>
+      <th>Mode</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Sample size</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+      <tr>
+        
+          <td class="text-left"><a href="single_poolboy.html">poolboy</a></td>
+        
+        
+          <td>11.36</td>
+          <td>88.00 ms</td>
+          <td>±1.65%</td>
+          <td>87.89 ms</td>
+          <td>none</td>
+          <td>85.88 ms</td>
+          <td>95.35 ms</td>
+        
+        <td>57</td>
+      </tr>
+    
+      
+      <tr>
+        
+          <td class="text-left"><a href="single_api.html">api</a></td>
+        
+        
+          <td>3.54</td>
+          <td>282.20 ms</td>
+          <td>±3.98%</td>
+          <td>280.46 ms</td>
+          <td>none</td>
+          <td>269.60 ms</td>
+          <td>319.73 ms</td>
+        
+        <td>18</td>
+      </tr>
+    
+      
+      <tr>
+        
+          <td class="text-left"><a href="single_weasyprint_cmd.html">weasyprint_cmd</a></td>
+        
+        
+          <td>1.29</td>
+          <td>777.66 ms</td>
+          <td>±0.99%</td>
+          <td>775.87 ms</td>
+          <td>none</td>
+          <td>769.33 ms</td>
+          <td>789.94 ms</td>
+        
+        <td>7</td>
+      </tr>
+    
+      
+      <tr>
+        
+          <td class="text-left"><a href="single_weasyprint_port.html">weasyprint_port</a></td>
+        
+        
+          <td>1.22</td>
+          <td>819.81 ms</td>
+          <td>±0.39%</td>
+          <td>819.73 ms</td>
+          <td>none</td>
+          <td>815.51 ms</td>
+          <td>825.75 ms</td>
+        
+        <td>7</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="ips-comparison" class="job-count-4 plot"></div>
+        </section>
+
+        <section class="benchee-plot-container">
+          <div id="run-time-box-plot" class="job-count-4 plot"></div>
+        </section>
+      </article>
+    
+
+    
+
+    <footer>
+      <a href="https://github.com/PragTob/benchee" target="blank">benchee version: 1.0.1 </a>
+<br/>
+<a href="https://github.com/PragTob/benchee_html" target="blank">benchee_html version: 1.0.0</a>
+
+
+    </footer>
+
+    
+  <script src="assets/javascripts/plotly-1.30.1.min.js"></script>
+  <script src="assets/javascripts/benchee.js"></script>
+
+
+
+    <script>
+      var scenarios     = [{"name":"poolboy","job_name":"poolboy","input_name":"__no_input","run_time_data":{"statistics":{"absolute_difference":null,"average":88001598.77192983,"ips":11.363429914400298,"maximum":95347731.0,"median":87885462.0,"minimum":85882840.0,"mode":null,"percentiles":{"50":87885462.0,"99":95347731.0},"relative_less":null,"relative_more":null,"sample_size":57,"std_dev":1448287.9651750769,"std_dev_ips":0.1870138613139142,"std_dev_ratio":0.016457518788136408},"samples":[88479799.0,88673863.0,89397410.0,88516863.0,89266178.0,87908208.0,88184877.0,87117684.0,88926125.0,87939040.0,86916980.0,88003625.0,88253701.0,88960446.0,87256099.0,87342137.0,88074538.0,86906661.0,87982496.0,87885462.0,86741454.0,8.78862e7,87097712.0,88209279.0,86804891.0,86820554.0,87353709.0,86934714.0,87074163.0,87744266.0,95347731.0,88140486.0,87947897.0,87366793.0,86931036.0,87654322.0,85882840.0,87429415.0,88132093.0,87222818.0,87147202.0,91768416.0,90588618.0,89915723.0,86828605.0,88525695.0,88522980.0,87509257.0,85940377.0,87028394.0,88430507.0,87128166.0,88095659.0,87471740.0,87799735.0,89735719.0,86939772.0]},"memory_usage_data":{"statistics":{"absolute_difference":null,"average":null,"ips":null,"maximum":null,"median":null,"minimum":null,"mode":null,"percentiles":null,"relative_less":null,"relative_more":null,"sample_size":0,"std_dev":null,"std_dev_ips":null,"std_dev_ratio":null},"samples":[]},"tag":null},{"name":"api","job_name":"api","input_name":"__no_input","run_time_data":{"statistics":{"absolute_difference":194196218.1725146,"average":282197816.9444444,"ips":3.543613521988611,"maximum":319730328.0,"median":280457030.0,"minimum":269601382.0,"mode":null,"percentiles":{"50":280457030.0,"99":319730328.0},"relative_less":0.3118436553648269,"relative_more":3.206735114844959,"sample_size":18,"std_dev":11241850.809003996,"std_dev_ips":0.14116613292868857,"std_dev_ratio":0.03983677453896516},"samples":[278070356.0,273759071.0,287594854.0,275090895.0,285276756.0,281205317.0,279708743.0,319730328.0,271903765.0,285388955.0,269601382.0,285985909.0,286871231.0,282186716.0,270049677.0,279173484.0,290350014.0,277613252.0]},"memory_usage_data":{"statistics":{"absolute_difference":null,"average":null,"ips":null,"maximum":null,"median":null,"minimum":null,"mode":null,"percentiles":null,"relative_less":null,"relative_more":null,"sample_size":0,"std_dev":null,"std_dev_ips":null,"std_dev_ratio":null},"samples":[]},"tag":null},{"name":"weasyprint_cmd","job_name":"weasyprint_cmd","input_name":"__no_input","run_time_data":{"statistics":{"absolute_difference":689656477.3709273,"average":777658076.1428572,"ips":1.2859121903034132,"maximum":789938464.0,"median":775869760.0,"minimum":769334534.0,"mode":null,"percentiles":{"50":775869760.0,"99":789938464.0},"relative_less":0.11316232862701445,"relative_more":8.83686304561673,"sample_size":7,"std_dev":7683027.167635692,"std_dev_ips":0.01270442447186792,"std_dev_ratio":0.009879698293295042},"samples":[769334534.0,772987838.0,781438670.0,789938464.0,770164281.0,775869760.0,783872986.0]},"memory_usage_data":{"statistics":{"absolute_difference":null,"average":null,"ips":null,"maximum":null,"median":null,"minimum":null,"mode":null,"percentiles":null,"relative_less":null,"relative_more":null,"sample_size":0,"std_dev":null,"std_dev_ips":null,"std_dev_ratio":null},"samples":[]},"tag":null},{"name":"weasyprint_port","job_name":"weasyprint_port","input_name":"__no_input","run_time_data":{"statistics":{"absolute_difference":731803640.6566416,"average":819805239.4285715,"ips":1.2198019138021485,"maximum":825752433.0,"median":819734144.0,"minimum":815510685.0,"mode":null,"percentiles":{"50":819734144.0,"99":825752433.0},"relative_less":0.1073445185996488,"relative_more":9.315799381704728,"sample_size":7,"std_dev":3203115.3513248037,"std_dev_ips":0.004765968851819546,"std_dev_ratio":0.003907166235675037},"samples":[820553360.0,817622480.0,818634652.0,820828922.0,815510685.0,825752433.0,819734144.0]},"memory_usage_data":{"statistics":{"absolute_difference":null,"average":null,"ips":null,"maximum":null,"median":null,"minimum":null,"mode":null,"percentiles":null,"relative_less":null,"relative_more":null,"sample_size":0,"std_dev":null,"std_dev_ips":null,"std_dev_ratio":null},"samples":[]},"tag":null}];
+      var inputHeadline = "";
+
+      
+        drawIpsComparisonChart(scenarios, inputHeadline);
+        drawRunTimeComparisonBoxPlot(scenarios, inputHeadline);
+      
+
+      
+    </script>
+  </body>
+</html>
